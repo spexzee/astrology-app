@@ -1,122 +1,195 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import { Layout, type NavItem } from './components/layout/Layout';
+import {
+  DashboardPage,
+  NewChartPage,
+  ChartViewPage,
+  SavedChartsPage,
+  ReportsPage,
+} from './pages';
+import { generateBirthChart } from './astrology/services/chartService';
+import {
+  saveProfileToStorage,
+  getProfilesFromStorage,
+  deleteProfileFromStorage,
+} from './services/storageService';
+import { generatePdfReport } from './services/pdfService';
+import type {
+  BirthDetails,
+  ChartData,
+  SavedProfileRecord,
+} from './astrology/types/chart';
 
-function App() {
-  const [count, setCount] = useState(0)
+export function App() {
+  const [currentNav, setCurrentNav] = useState<NavItem>('dashboard');
+  const [savedProfiles, setSavedProfiles] = useState<SavedProfileRecord[]>([]);
+  const [activeChartData, setActiveChartData] = useState<ChartData | null>(null);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isCalculating, setIsCalculating] = useState(false);
+  const [formInitialData, setFormInitialData] = useState<Partial<BirthDetails> | null>(null);
+
+  // Load saved profiles from SQLite on startup
+  useEffect(() => {
+    loadProfiles();
+  }, []);
+
+  const loadProfiles = async () => {
+    try {
+      const profiles = await getProfilesFromStorage();
+      setSavedProfiles(profiles);
+    } catch (err) {
+      console.error('Failed to load profiles from SQLite:', err);
+    }
+  };
+
+  const handleGenerateChart = async (details: BirthDetails) => {
+    setIsCalculating(true);
+    setTimeout(() => {
+      try {
+        const chart = generateBirthChart(details);
+        setActiveChartData(chart);
+        setIsSaved(!!details.id);
+        setIsCalculating(false);
+        setCurrentNav('chart-view');
+      } catch (err) {
+        console.error('Calculation error:', err);
+        setIsCalculating(false);
+        alert('Failed to generate chart. Please check the birth details.');
+      }
+    }, 300);
+  };
+
+  const handleSaveProfile = async (chart: ChartData) => {
+    try {
+      const savedRecord = await saveProfileToStorage(chart.birthDetails);
+      setIsSaved(true);
+      setActiveChartData({
+        ...chart,
+        birthDetails: {
+          ...chart.birthDetails,
+          id: savedRecord.id,
+          createdAt: savedRecord.createdAt,
+          updatedAt: savedRecord.updatedAt,
+        },
+      });
+      await loadProfiles();
+    } catch (err: any) {
+      console.error('Save failed:', err);
+      throw err;
+    }
+  };
+
+  const handleDeleteProfile = async (id: string) => {
+    if (window.confirm('Are you sure you want to delete this saved profile?')) {
+      try {
+        await deleteProfileFromStorage(id);
+        if (activeChartData?.birthDetails.id === id) {
+          setIsSaved(false);
+        }
+        await loadProfiles();
+      } catch (err) {
+        console.error('Delete failed:', err);
+      }
+    }
+  };
+
+  const handleOpenProfile = (profile: BirthDetails) => {
+    try {
+      const chart = generateBirthChart(profile);
+      setActiveChartData(chart);
+      setIsSaved(true);
+      setCurrentNav('chart-view');
+    } catch (err) {
+      console.error('Failed to open chart for profile:', err);
+    }
+  };
+
+  const handleLoadDemoProfile = (demo: BirthDetails) => {
+    setFormInitialData(demo);
+    handleGenerateChart(demo);
+  };
+
+  const handleExportActivePdf = async () => {
+    if (!activeChartData) return;
+    try {
+      await generatePdfReport(activeChartData);
+    } catch (err) {
+      console.error('PDF export failed:', err);
+    }
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <Layout
+      currentNav={currentNav}
+      onNavigate={(nav) => {
+        if (nav === 'new-chart') {
+          setFormInitialData(null);
+        }
+        setCurrentNav(nav);
+      }}
+      activeChartName={activeChartData ? `${activeChartData.birthDetails.name}'s Chart` : undefined}
+      hasActiveChart={activeChartData !== null}
+      onSave={activeChartData ? () => handleSaveProfile(activeChartData) : undefined}
+      onExportPdf={activeChartData ? handleExportActivePdf : undefined}
+      isSaved={isSaved}
+    >
+      {currentNav === 'dashboard' && (
+        <DashboardPage
+          savedProfiles={savedProfiles}
+          onOpenProfile={handleOpenProfile}
+          onDeleteProfile={handleDeleteProfile}
+          onNewChart={() => {
+            setFormInitialData(null);
+            setCurrentNav('new-chart');
+          }}
+          onViewAllSaved={() => setCurrentNav('saved-charts')}
+          onViewReports={() => setCurrentNav('reports')}
+          onLoadDemoProfile={handleLoadDemoProfile}
+        />
+      )}
 
-      <div className="ticks"></div>
+      {currentNav === 'new-chart' && (
+        <NewChartPage
+          initialData={formInitialData}
+          onGenerate={handleGenerateChart}
+          isCalculating={isCalculating}
+        />
+      )}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      {currentNav === 'chart-view' && activeChartData && (
+        <ChartViewPage
+          chartData={activeChartData}
+          onSaveProfile={handleSaveProfile}
+          onBack={() => setCurrentNav('dashboard')}
+          isSaved={isSaved}
+        />
+      )}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {currentNav === 'saved-charts' && (
+        <SavedChartsPage
+          savedProfiles={savedProfiles}
+          onOpenProfile={handleOpenProfile}
+          onDeleteProfile={handleDeleteProfile}
+          onNewChart={() => {
+            setFormInitialData(null);
+            setCurrentNav('new-chart');
+          }}
+        />
+      )}
+
+      {currentNav === 'reports' && (
+        <ReportsPage
+          savedProfiles={savedProfiles}
+          activeChartData={activeChartData}
+          onNewChart={() => {
+            setFormInitialData(null);
+            setCurrentNav('new-chart');
+          }}
+          onOpenChart={handleOpenProfile}
+        />
+      )}
+    </Layout>
+  );
 }
 
-export default App
+export default App;

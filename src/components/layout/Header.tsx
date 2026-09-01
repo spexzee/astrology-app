@@ -36,14 +36,14 @@ export const Header: React.FC<HeaderProps> = ({
       <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
         <img
           src={logoImg}
-          alt="Logo"
+          alt="Vedic Astrology Logo"
           style={{ height: '28px', width: 'auto', objectFit: 'contain' }}
         />
         <span
           className="font-headline-sm"
           style={{ color: 'var(--color-on-surface-variant)', fontSize: '18px' }}
         >
-          Vedic Astrology Studio
+          Vedic Astrology
         </span>
       </div>
 

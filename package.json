@@ -1,10 +1,10 @@
 {
-  "name": "astrology-app",
-  "productName": "Vedic Astrology Studio",
+  "name": "vedic-astrology",
+  "productName": "Vedic Astrology",
   "private": true,
   "version": "1.0.0",
   "description": "Vedic Astrology Desktop Application",
-  "author": "Vedic Astrology Studio",
+  "author": "Vedic Astrology",
   "type": "module",
   "scripts": {
     "dev": "concurrently \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && electron .\"",
@@ -16,19 +16,23 @@
     "electron:portable": "npm run build && electron-builder --win portable --config.directories.output=\"C:/astrology-dist\""
   },
   "build": {
-    "appId": "com.vedicastrology.studio",
-    "productName": "Vedic Astrology Studio",
+    "appId": "com.vedicastrology.app",
+    "productName": "Vedic Astrology",
     "npmRebuild": false,
     "nodeGypRebuild": false,
+    "icon": "src/assets/icon.ico",
     "files": [
       "dist/**/*",
       "electron/**/*",
+      "src/assets/icon.ico",
+      "src/assets/logo.png",
       "package.json"
     ],
     "asarUnpack": [
       "**/node_modules/better-sqlite3/**/*"
     ],
     "win": {
+      "icon": "src/assets/icon.ico",
       "target": [
         {
           "target": "nsis",
@@ -49,7 +53,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Vedic Astrology Studio"
+      "shortcutName": "Vedic Astrology"
     }
   },
   "dependencies": {

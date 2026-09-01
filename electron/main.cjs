@@ -3,17 +3,26 @@ const path = require('path');
 const fs = require('fs');
 const db = require('./db.cjs');
 
+// Set Application User Model ID for Windows Taskbar icon grouping
+if (process.platform === 'win32') {
+  app.setAppUserModelId('com.vedicastrology.app');
+}
+
 const isDev = !app.isPackaged;
 let mainWindow = null;
 
 function createWindow() {
+  const iconPath = path.join(__dirname, '../src/assets/icon.ico');
+  const fallbackIcon = path.join(__dirname, '../src/assets/logo.png');
+
   mainWindow = new BrowserWindow({
     width: 1440,
     height: 900,
     minWidth: 1100,
     minHeight: 700,
-    title: 'Vedic Astrology Studio',
+    title: 'Vedic Astrology',
     backgroundColor: '#fff8f3',
+    icon: fs.existsSync(iconPath) ? iconPath : fallbackIcon,
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,

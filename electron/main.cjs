@@ -13,7 +13,7 @@ function createWindow() {
     minWidth: 1100,
     minHeight: 700,
     title: 'Vedic Astrology Studio',
-    backgroundColor: '#0d1117',
+    backgroundColor: '#fff8f3',
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
@@ -26,6 +26,10 @@ function createWindow() {
   } else {
     mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
   }
+
+  mainWindow.webContents.on('did-fail-load', (_event, errorCode, errorDescription) => {
+    console.error('Failed to load application:', errorCode, errorDescription);
+  });
 }
 
 // Initialize SQLite database in Electron user data directory

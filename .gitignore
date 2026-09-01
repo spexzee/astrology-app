@@ -7,18 +7,57 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies
+node_modules/
+
+# Production & Build Outputs
+dist/
+dist-ssr/
+dist-installer/
+dist-electron/
+release/
+build/
+out/
+
+# Executables & Installer Artifacts
+*.exe
+*.blockmap
+*.zip
+*.tar.gz
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+*.tmp
+
+# SQLite Local Databases & Runtime Storage
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+userData/
+
+# Environment Variables & Local Configs
+.env
+.env.*
+!.env.example
 *.local
 
-# Editor directories and files
+# Editor & IDE directories
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Agent & Temp directories
+.agents/
+.antigravity/
+.gemini/
+coverage/

@@ -104,7 +104,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <h1 className="font-display-lg" style={{ color: 'var(--color-on-surface)', margin: 0 }}>
-              Vedic Astrology Studio
+              Vedic Astrology
             </h1>
             <p
               className="font-body-md"
@@ -282,7 +282,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
                   }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {isSaved && item.id && (
+                  {isSaved && 'id' in item && item.id && (
                     <button
                       onClick={() => onDeleteProfile(item.id!)}
                       style={{

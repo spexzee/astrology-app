@@ -287,8 +287,62 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 90px;
+  }
+  .sidebarLabel {
+    font-size: 7.5px;
+  }
+}
+
 @media (max-width: 640px) {
   .tablePanel {
     display: none;
+  }
+  .chartPanel {
+    border-right: none;
+    padding: 8px;
+  }
+  .headerActions {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .window {
+    aspect-ratio: 16/11;
+  }
+  .sidebar {
+    width: 36px;
+    padding: 6px 0;
+  }
+  .sidebarLogo {
+    padding: 0 0 6px;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .sidebarNav {
+    padding: 0 4px;
+  }
+  .sidebarItem {
+    justify-content: center;
+    padding: 6px 0;
+  }
+  .sidebarLabel {
+    display: none;
+  }
+  .birthBar {
+    padding: 5px 8px;
+  }
+  .birthName {
+    font-size: 9.5px;
+  }
+  .birthMeta {
+    font-size: 7px;
+  }
+  .birthBadge {
+    font-size: 7px;
+    padding: 1px 5px;
   }
 }

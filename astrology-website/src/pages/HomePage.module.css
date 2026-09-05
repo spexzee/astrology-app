@@ -313,6 +313,10 @@
 }
 
 @media (max-width: 768px) {
+  .heroGeometry {
+    display: none;
+  }
+
   .highlights {
     grid-template-columns: 1fr;
   }
@@ -333,5 +337,39 @@
   .steps {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
+  }
+
+  .ctaInner {
+    padding: var(--space-xl) var(--space-lg);
+  }
+}
+
+@media (max-width: 640px) {
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: var(--space-sm);
+  }
+
+  .heroActions a,
+  .heroActions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ctaAction {
+    width: 100%;
+  }
+
+  .ctaAction a,
+  .ctaAction button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ctaMeta {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
   }
 }

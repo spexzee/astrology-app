@@ -117,13 +117,14 @@
   }
 
   .sidebar {
-    max-width: 400px;
+    max-width: 100%;
   }
 }
 
 @media (max-width: 600px) {
   .focusItem {
     grid-template-columns: 1fr;
-    gap: var(--space-xs);
+    gap: 4px;
+    padding: var(--space-md) 0;
   }
 }

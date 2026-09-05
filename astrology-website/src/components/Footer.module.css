@@ -99,7 +99,13 @@
     text-align: left;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: var(--space-md);
+    gap: var(--space-sm) var(--space-lg);
+  }
+
+  .navLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 0;
   }
 
   .tagline {

@@ -1,0 +1,227 @@
+.page {
+  padding-top: var(--nav-height);
+}
+
+.headerSection {
+  padding: var(--space-3xl) 0 var(--space-2xl);
+  border-bottom: 1px solid var(--color-outline-light);
+}
+
+.downloadSection {
+  padding: var(--space-3xl) 0 var(--space-4xl);
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-2xl);
+  align-items: flex-start;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Options column */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Primary download card */
+.primaryDownload {
+  border: 1px solid var(--color-outline-light);
+  display: flex;
+  flex-direction: column;
+}
+
+.downloadHeader {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--color-outline-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.downloadLabel {
+  color: var(--color-primary);
+}
+
+.downloadTitle {
+  color: var(--color-on-surface);
+}
+
+.downloadMeta {
+  color: var(--color-on-surface-muted);
+}
+
+.downloadAction {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--color-outline-light);
+}
+
+.unavailableWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.unavailableNote {
+  color: var(--color-on-surface-subtle);
+  max-width: 420px;
+}
+
+/* Secondary (ZIP) section */
+.secondaryDownload {
+  padding: var(--space-lg) var(--space-xl);
+}
+
+.secondaryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.secondaryLabel {
+  color: var(--color-on-surface-muted);
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.secondaryDesc {
+  color: var(--color-on-surface-subtle);
+  max-width: 360px;
+}
+
+/* Notice */
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline-light);
+  border-left: 3px solid var(--color-primary);
+}
+
+.noticeIcon {
+  color: var(--color-primary);
+  font-style: normal;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.noticeText {
+  color: var(--color-on-surface-muted);
+}
+
+.noticeText strong {
+  color: var(--color-on-surface);
+  font-weight: 600;
+}
+
+/* Version info sidebar */
+.versionInfo {
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline-light);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.versionLabel {
+  color: var(--color-primary);
+}
+
+.versionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--color-outline-light);
+}
+
+.versionRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-outline-light);
+}
+
+.versionRow:last-child {
+  border-bottom: none;
+}
+
+.versionDt {
+  color: var(--color-on-surface-subtle);
+}
+
+.versionDd {
+  color: var(--color-on-surface);
+  margin: 0;
+}
+
+/* System requirements */
+.systemReqs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-outline-light);
+}
+
+.reqsLabel {
+  color: var(--color-on-surface-muted);
+}
+
+.reqsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.reqsItem {
+  color: var(--color-on-surface-muted);
+  display: flex;
+  gap: var(--space-sm);
+}
+
+/* Releases note */
+.releasesNote {
+  padding: var(--space-xl);
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.releasesNoteLabel {
+  color: var(--color-on-surface-muted);
+}
+
+.releasesNoteText {
+  color: var(--color-on-surface-muted);
+  max-width: 680px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .versionInfo {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .secondaryHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

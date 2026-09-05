@@ -1,0 +1,334 @@
+/* ============================================================
+   Vedic Astrology — Website Global Styles
+   Mirrors the Electron application's design token system.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ---------------------------------------------------------------
+   Design Tokens — Matching the Electron App Exactly
+---------------------------------------------------------------- */
+:root {
+  /* Color System */
+  --color-background: #fff8f3;
+  --color-surface: #fff8f3;
+  --color-surface-low: #faf2ec;
+  --color-surface-container: #f4ede6;
+  --color-surface-high: #eee7e1;
+  --color-surface-dim: #e0d9d3;
+
+  --color-primary: #79542e;
+  /* Antique bronze */
+  --color-primary-hover: #5e3f1f;
+  --color-primary-light: #ffdcbd;
+  --color-primary-muted: rgba(121, 84, 46, 0.08);
+
+  --color-secondary: #904a49;
+  /* Deep burgundy */
+  --color-secondary-light: #fca4a1;
+
+  --color-on-background: #1e1b17;
+  /* Deep charcoal */
+  --color-on-surface: #1e1b17;
+  --color-on-surface-muted: #50453b;
+  --color-on-surface-subtle: #7a6a5e;
+
+  --color-outline: #82756a;
+  --color-outline-light: #d4c4b7;
+  --color-outline-faint: rgba(212, 196, 183, 0.35);
+
+  /* Typography */
+  --font-display: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 128px;
+
+  /* Layout */
+  --max-width: 1200px;
+  --nav-height: 68px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+}
+
+/* ---------------------------------------------------------------
+   Reset
+---------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ---------------------------------------------------------------
+   Scrollbar
+---------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* ---------------------------------------------------------------
+   Focus States (Accessibility)
+---------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------
+   Typography Scale
+---------------------------------------------------------------- */
+
+/* Display — Serif */
+.t-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+.t-display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+}
+
+.t-display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.625rem, 2.5vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.t-display-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.75vw, 1.625rem);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+/* Headline — Serif */
+.t-headline {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Body — Sans */
+.t-body-lg {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+.t-body-md {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.t-body-sm {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* Label — Sans uppercase */
+.t-label {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.t-label-md {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------
+   Layout Utilities
+---------------------------------------------------------------- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Divider
+---------------------------------------------------------------- */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-outline-light);
+}
+
+.divider--faint {
+  background: var(--color-outline-faint);
+}
+
+/* ---------------------------------------------------------------
+   Animations
+---------------------------------------------------------------- */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+/* Intersection observer scroll-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.stagger>*:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.stagger>*:nth-child(2) {
+  transition-delay: 80ms;
+}
+
+.stagger>*:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+.stagger>*:nth-child(4) {
+  transition-delay: 240ms;
+}
+
+.stagger>*:nth-child(5) {
+  transition-delay: 320ms;
+}
+
+.stagger>*:nth-child(6) {
+  transition-delay: 400ms;
+}

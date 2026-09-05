@@ -1,0 +1,337 @@
+/* ================================================================
+   HomePage — Editorial marketing layout
+================================================================ */
+
+/* ---- Hero ---- */
+.hero {
+  position: relative;
+  padding-top: calc(var(--nav-height) + var(--space-3xl));
+  padding-bottom: var(--space-3xl);
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.heroGeometry {
+  position: absolute;
+  right: -80px;
+  bottom: -80px;
+  width: 600px;
+  height: 400px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.heroEyebrow {
+  color: var(--color-primary);
+}
+
+.heroHeading {
+  color: var(--color-on-surface);
+}
+
+.heroHeadingEm {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.heroSubtitle {
+  color: var(--color-on-surface-muted);
+  max-width: 480px;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.heroPlatform {
+  color: var(--color-on-surface-subtle);
+}
+
+.heroMockup {
+  position: relative;
+}
+
+/* ---- Intro ---- */
+.intro {
+  padding: var(--space-3xl) 0;
+}
+
+.introHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+  margin-bottom: var(--space-2xl);
+}
+
+.introHeading {
+  color: var(--color-on-surface);
+}
+
+.introText {
+  color: var(--color-on-surface-muted);
+  padding-top: 6px; /* Align with heading cap height */
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--color-outline-light);
+}
+
+.highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-xl) var(--space-xl) var(--space-xl) 0;
+  border-right: 1px solid var(--color-outline-light);
+}
+
+.highlight:last-child {
+  border-right: none;
+  padding-right: 0;
+  padding-left: var(--space-xl);
+}
+
+.highlight:not(:first-child):not(:last-child) {
+  padding-left: var(--space-xl);
+}
+
+.highlightIcon {
+  color: var(--color-primary);
+  opacity: 0.7;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.highlightTitle {
+  color: var(--color-on-surface);
+  margin-bottom: var(--space-xs);
+  font-size: 1.0625rem;
+}
+
+.highlightDesc {
+  color: var(--color-on-surface-muted);
+}
+
+/* ---- Section labels (shared) ---- */
+.sectionLabel {
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.sectionHeading {
+  color: var(--color-on-surface);
+  max-width: 600px;
+}
+
+/* ---- How It Works ---- */
+.howItWorks {
+  padding: var(--space-3xl) 0;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-outline-light);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.stepNumber {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: var(--color-outline-light);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stepDivider {
+  width: 24px;
+  height: 1px;
+  background: var(--color-primary);
+  opacity: 0.4;
+}
+
+.stepTitle {
+  color: var(--color-on-surface);
+  font-size: 1.0625rem;
+}
+
+.stepDesc {
+  color: var(--color-on-surface-muted);
+}
+
+/* ---- Why Desktop ---- */
+.whyDesktop {
+  padding: var(--space-3xl) 0;
+}
+
+.whyDesktopInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+.whyList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: 4px;
+}
+
+.whyItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  color: var(--color-on-surface-muted);
+}
+
+.whyBullet {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  line-height: 1.6;
+  opacity: 0.6;
+}
+
+/* ---- CTA ---- */
+.cta {
+  padding: var(--space-3xl) 0 var(--space-4xl);
+}
+
+.ctaInner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding: var(--space-2xl) var(--space-2xl);
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline-light);
+}
+
+.ctaHeading {
+  color: var(--color-on-surface);
+  max-width: 480px;
+}
+
+.ctaSubtext {
+  color: var(--color-on-surface-muted);
+  margin-top: var(--space-sm);
+  max-width: 420px;
+}
+
+.ctaAction {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.ctaMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.ctaMetaItem {
+  color: var(--color-on-surface-subtle);
+}
+
+.ctaMetaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--color-outline-light);
+}
+
+/* ================================================================
+   Responsive
+================================================================ */
+
+@media (max-width: 1024px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .heroMockup {
+    max-width: 600px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-height) + var(--space-2xl));
+    padding-bottom: var(--space-2xl);
+  }
+
+  .introHeader {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .whyDesktopInner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .ctaInner {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight,
+  .highlight:not(:first-child):not(:last-child),
+  .highlight:last-child {
+    border-right: none;
+    border-bottom: 1px solid var(--color-outline-light);
+    padding: var(--space-xl) 0;
+  }
+
+  .highlight:last-child {
+    border-bottom: none;
+    padding-left: 0;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+}

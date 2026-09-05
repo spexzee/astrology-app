@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Outer petals — 8 ellipses in the same pattern as the logo -->
+  <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#79542e" stroke-width="1.2" transform="rotate(0 16 16)" fill="none"/>
+  <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#79542e" stroke-width="1.2" transform="rotate(30 16 16)" fill="none"/>
+  <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#79542e" stroke-width="1.2" transform="rotate(60 16 16)" fill="none"/>
+  <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#79542e" stroke-width="1.2" transform="rotate(90 16 16)" fill="none"/>
+  <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#79542e" stroke-width="1.2" transform="rotate(120 16 16)" fill="none"/>
+  <ellipse cx="16" cy="16" rx="13" ry="5" stroke="#79542e" stroke-width="1.2" transform="rotate(150 16 16)" fill="none"/>
+  <!-- Inner circle -->
+  <circle cx="16" cy="16" r="1.5" fill="#79542e"/>
+</svg>

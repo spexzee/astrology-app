@@ -1,0 +1,294 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Window frame */
+.window {
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline-light);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 24px rgba(30, 27, 23, 0.1),
+    0 1px 4px rgba(30, 27, 23, 0.06);
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title bar */
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  background: var(--color-surface-high);
+  border-bottom: 1px solid var(--color-outline-light);
+  padding: 0 12px;
+  flex-shrink: 0;
+}
+
+.titleBarLeft,
+.titleBarRight {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.titleBarRight {
+  justify-content: flex-end;
+}
+
+.titleBarCenter {
+  flex-shrink: 0;
+}
+
+.windowDots {
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-outline-light);
+}
+
+.windowTitle {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-on-surface-muted);
+  letter-spacing: 0.02em;
+}
+
+.headerActions {
+  display: flex;
+  gap: 4px;
+}
+
+.actionChip {
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--color-on-surface-muted);
+  border: 1px solid var(--color-outline-light);
+  border-radius: 3px;
+  padding: 2px 7px;
+  letter-spacing: 0.03em;
+}
+
+/* App body layout */
+.appBody {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 110px;
+  background: var(--color-surface-low);
+  border-right: 1px solid var(--color-outline-light);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 10px 0;
+}
+
+.sidebarLogo {
+  padding: 0 10px 10px;
+  border-bottom: 1px solid var(--color-outline-light);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebarLogoImg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0 6px;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 7px;
+  border-radius: 3px;
+  cursor: default;
+}
+
+.sidebarItemActive {
+  background: rgba(121, 84, 46, 0.1);
+}
+
+.sidebarDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-outline-light);
+  flex-shrink: 0;
+}
+
+.sidebarItemActive .sidebarDot {
+  background: var(--color-primary);
+}
+
+.sidebarLabel {
+  font-family: var(--font-body);
+  font-size: 8.5px;
+  font-weight: 500;
+  color: var(--color-on-surface-muted);
+  white-space: nowrap;
+}
+
+.sidebarItemActive .sidebarLabel {
+  color: var(--color-primary);
+}
+
+/* Main content */
+.mainContent {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Birth bar */
+.birthBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--color-outline-faint);
+  background: rgba(255, 248, 243, 0.8);
+  flex-shrink: 0;
+}
+
+.birthInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.birthName {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-on-surface);
+}
+
+.birthMeta {
+  font-family: var(--font-body);
+  font-size: 8px;
+  color: var(--color-on-surface-muted);
+}
+
+.birthBadge {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  border: 1px solid rgba(121, 84, 46, 0.3);
+  border-radius: 2px;
+  padding: 2px 7px;
+}
+
+/* Chart + table layout */
+.chartLayout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 0;
+}
+
+.chartPanel {
+  flex: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-right: 1px solid var(--color-outline-faint);
+  overflow: hidden;
+}
+
+/* Planet table */
+.tablePanel {
+  flex: 0.9;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableTitle {
+  font-family: var(--font-body);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-muted);
+  padding: 8px 10px 6px;
+  border-bottom: 1px solid var(--color-outline-faint);
+  flex-shrink: 0;
+}
+
+.planetTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 8px;
+  flex: 1;
+}
+
+.planetTable th {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-muted);
+  padding: 5px 7px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-outline-faint);
+  background: rgba(244, 237, 230, 0.5);
+}
+
+.planetTable td {
+  padding: 4px 7px;
+  color: var(--color-on-surface);
+  border-bottom: 1px solid rgba(212, 196, 183, 0.2);
+}
+
+.planetTable tr:last-child td {
+  border-bottom: none;
+}
+
+.planetName {
+  font-weight: 600;
+  color: var(--color-primary) !important;
+}
+
+.deg {
+  color: var(--color-on-surface-muted) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .tablePanel {
+    display: none;
+  }
+}

@@ -1,0 +1,129 @@
+.page {
+  padding-top: var(--nav-height);
+}
+
+.headerSection {
+  padding: var(--space-3xl) 0 var(--space-2xl);
+  border-bottom: 1px solid var(--color-outline-light);
+}
+
+.content {
+  padding: var(--space-3xl) 0 var(--space-4xl);
+}
+
+/* Two-column layout */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--space-4xl);
+  align-items: flex-start;
+}
+
+/* Main column */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.lead {
+  color: var(--color-on-surface);
+  font-size: 1.1875rem;
+  line-height: 1.7;
+  max-width: 660px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.body p {
+  color: var(--color-on-surface-muted);
+  max-width: 600px;
+}
+
+/* Focus section */
+.focusSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.focusHeading {
+  color: var(--color-on-surface);
+}
+
+.focusList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--color-outline-light);
+}
+
+.focusItem {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-outline-light);
+  align-items: baseline;
+}
+
+.focusTitle {
+  color: var(--color-on-surface-muted);
+}
+
+.focusDesc {
+  color: var(--color-on-surface-muted);
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--color-surface-container);
+  border: 1px solid var(--color-outline-light);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.infoBlock {
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-outline-light);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.infoBlock:last-child {
+  border-bottom: none;
+}
+
+.infoLabel {
+  color: var(--color-on-surface-subtle);
+}
+
+.infoValue {
+  color: var(--color-on-surface);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .sidebar {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .focusItem {
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+  }
+}

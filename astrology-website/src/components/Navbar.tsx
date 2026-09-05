@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: 'Features', to: '/features' },
   { label: 'About', to: '/about' },
   { label: 'Downloads', to: '/downloads' },
+  { label: 'Contact', to: '/contact' },
 ]
 
 export const Navbar: React.FC = () => {
@@ -22,10 +23,22 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close mobile menu on route change
+  // Close mobile menu on route change & manage body scroll
   useEffect(() => {
     setMobileOpen(false)
+    document.body.style.overflow = ''
   }, [location])
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
 
   return (
     <>

@@ -62,6 +62,14 @@
 @media (max-width: 600px) {
   .infoRow {
     grid-template-columns: 1fr;
-    gap: var(--space-xs);
+    gap: 4px;
+    padding: var(--space-md) 0;
+  }
+
+  .infoVal {
+    word-break: break-all;
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
   }
 }

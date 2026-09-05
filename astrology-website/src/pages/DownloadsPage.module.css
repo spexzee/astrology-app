@@ -215,13 +215,43 @@
   }
 
   .versionInfo {
-    max-width: 480px;
+    max-width: 100%;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+  .downloadHeader,
+  .downloadAction,
+  .secondaryDownload,
+  .releasesNote {
+    padding: var(--space-lg);
+  }
+
+  .downloadAction a,
+  .downloadAction button {
+    width: 100%;
+    justify-content: center;
+  }
+
   .secondaryHeader {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: var(--space-md);
+  }
+
+  .secondaryHeader a,
+  .secondaryHeader button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .unavailableWrap {
+    width: 100%;
+  }
+
+  .unavailableWrap a,
+  .unavailableWrap button {
+    width: 100%;
+    justify-content: center;
   }
 }

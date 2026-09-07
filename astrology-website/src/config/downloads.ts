@@ -32,8 +32,8 @@ export const downloadConfig = {
      * Use '/downloads/Vedic-Astrology-Studio-Setup-1.0.0.exe'
      * and place the file in astrology-website/public/downloads/
      */
-    installer: '/downloads/Vedic Astrology Setup 1.0.0.exe',
-    zip: '/downloads/Vedic-Astrology-Studio-1.0.0.zip',
+    installer: 'https://github.com/spexzee/astrology-app/releases/download/pre-release/Vedic.Astrology.Setup.1.0.0.exe',
+    zip: 'https://github.com/spexzee/astrology-app/releases/download/pre-release/Vedic-Astrology-Studio-1.0.0.zip',
 
     /**
      * Set this to false if the download files are not yet available.
@@ -46,7 +46,7 @@ export const downloadConfig = {
      * Optional: fallback page if files aren't available yet
      * (e.g. a GitHub Releases page)
      */
-    releasesPage: 'https://github.com/YOUR_USERNAME/YOUR_REPO/releases',
+    releasesPage: 'https://github.com/spexzee/astrology-app/releases',
   },
 } as const
 
